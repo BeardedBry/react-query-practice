@@ -1,25 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ReactQueryDevtools } from "react-query-devtools";
+import "./App.css";
+import Infinite from "./components/Infinite";
+import NormalQuery from "./components/NormalQuery";
+import Paginated from "./components/Paginated";
+
+const defaultComp = <NormalQuery />;
+const componentList = ["Default", "Infinite", "Paginated"];
+
+const None = () => {
+  return <p>None</p>;
+};
 
 function App() {
+  const [comp, setComp] = React.useState(defaultComp);
+
+  function chooseComponent(target) {
+    switch (target) {
+      case "Default":
+        setComp(<NormalQuery />);
+        break;
+      case "Infinite":
+        setComp(<Infinite />);
+        break;
+      case "Paginated":
+        setComp(<Paginated />);
+        break;
+      default:
+        setComp(<None />);
+        break;
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <h3>React-Query Learning</h3>
+        {componentList.map((component) => {
+          return (
+            <button onClick={() => chooseComponent(component)} key={component}>
+              {component}
+            </button>
+          );
+        })}
+        {comp}
+      </div>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </>
   );
 }
 

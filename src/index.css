@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.regularPage {
+  max-width: 40rem;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.entry {
+  margin: 0;
+  padding: 1rem 0;
+}
+.entry:nth-child(even) {
+  background-color: gainsboro;
+}
+
+.quoteList {
+  text-align: left;
+  list-style-type: none;
+}
+
+.quoteList li {
+  margin: .3rem 0;
+  padding: 1rem;
+}
+.quoteList li:nth-child(odd) {
+  background-color: gainsboro;
+}
+
+.quote {
+  position: relative;
+  padding-left: 1rem;
+}
+.quote:before {
+  content: "\201C";
+  position: absolute;
+  font-size: 2rem;
+  left: -.3rem;
+  top: -.4rem;
+}
+
+.quoteAuthor {
+  padding-left: 1rem;
+}
+
+/* .page:nth-child(even){
+  background-color: gray;
+} */
